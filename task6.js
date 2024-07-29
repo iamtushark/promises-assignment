@@ -17,7 +17,7 @@ function fetchAllWithErrors(urls) {
 const urls = [
 	'https://dummyjson.com/test',
 	'https://dummyjson.com/test',
-	'https://dummyjson.com/'
+	'https://dummyjson.com/test'
 ];
 
 fetchAllWithErrors(urls)
