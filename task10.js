@@ -2,13 +2,13 @@ async function conditionalChaining(initialUrl, secondaryUrl1, secondaryUrl2) {
 	try {
 		const initialResponse = await fetch(initialUrl);
 		if (!initialResponse.ok) {
-			throw new Error(`HTTP error! Status: ${initialResponse.status} at URL: ${initialUrl}`);
+			throw new Error(`fetching failed at ${initialUrl} Status: ${initialResponse.status}`);
 		}
 		const initialData = await initialResponse.json();
 
 		let secondaryUrl;
-		
-		if (initialData.id === 1) {  
+
+		if (initialData.id === 1) {
 			secondaryUrl = secondaryUrl1;
 		} else {
 			secondaryUrl = secondaryUrl2;
@@ -16,7 +16,7 @@ async function conditionalChaining(initialUrl, secondaryUrl1, secondaryUrl2) {
 
 		const secondaryResponse = await fetch(secondaryUrl);
 		if (!secondaryResponse.ok) {
-			throw new Error(`HTTP error! Status: ${secondaryResponse.status} at URL: ${secondaryUrl}`);
+			throw new Error(`Failed fetching url: ${secondaryUrl} Status: ${secondaryResponse.status}`);
 		}
 		const secondaryData = await secondaryResponse.json();
 
